@@ -1,5 +1,5 @@
 brain-games: bin/brain-games
-	php bin/brain-games
+	./bin/brain-games
 
 install:
 	composer install
@@ -9,3 +9,6 @@ validate:
 
 lint:
 	composer exec --verbose phpcs -- --standard=PSR12 src bin
+
+brain-even: bin/brain-even
+	./bin/brain-even

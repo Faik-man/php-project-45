@@ -3,14 +3,16 @@
     "description": "",
     "license": "MIT",
     "bin": [
-        "bin/brain-games"
+        "bin/brain-games",
+        "bin/brain-even"
     ],
     "require": {
         "wp-cli/php-cli-tools": "^0.13.0"
     },
     "autoload": {
         "files": [
-            "src/Cli.php"
+            "src/Cli.php",
+            "src/EvenGame.php"
         ]
     },
     "require-dev": {
