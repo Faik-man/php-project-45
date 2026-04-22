@@ -5,5 +5,12 @@
     "bin": [
         "bin/brain-games"
     ],
-    "require": {}
+    "require": {
+        "wp-cli/php-cli-tools": "^0.13.0"
+    },
+    "autoload": {
+        "files": [
+            "src/Cli.php"
+        ]
+    }
 }
