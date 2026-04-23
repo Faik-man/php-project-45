@@ -14,3 +14,5 @@
 [Проверка на чётность](https://asciinema.org/a/PG2Ou5DHHp7uepk1)
 [Калькулятор](https://asciinema.org/a/mJ9jrcL7fn0CzdhO)
 [НОД](https://asciinema.org/a/C8GeN209wcLb8zGW)
+[Арифметическая прогрессия](https://asciinema.org/a/KbNfhcAdJ79K3AIv)
+
