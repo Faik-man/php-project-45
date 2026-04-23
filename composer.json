@@ -4,7 +4,8 @@
     "license": "MIT",
     "bin": [
         "bin/brain-games",
-        "bin/brain-even"
+        "bin/brain-even",
+        "bin/brain-calc"
     ],
     "require": {
         "wp-cli/php-cli-tools": "^0.13.0"
@@ -12,7 +13,8 @@
     "autoload": {
         "files": [
             "src/Cli.php",
-            "src/EvenGame.php"
+            "src/Games/CheckEven.php",
+            "src/Games/Calculator.php"
         ]
     },
     "require-dev": {
