@@ -20,7 +20,6 @@ function run(): void
     $generatorCorrectAnswer = function ($numbers) {
         [$firstNumber, $secondNumber] = explode(' ', $numbers);
         $min = min($firstNumber, $secondNumber);
-        $lastDelimiter = (int)floor($min / 2);
 
         while ($secondNumber != 0) {
             $rest = $firstNumber % $secondNumber;
