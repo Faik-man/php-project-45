@@ -19,7 +19,6 @@ function run(): void
 
     $generatorCorrectAnswer = function ($numbers) {
         [$firstNumber, $secondNumber] = explode(' ', $numbers);
-        $min = min($firstNumber, $secondNumber);
 
         while ($secondNumber != 0) {
             $rest = $firstNumber % $secondNumber;
