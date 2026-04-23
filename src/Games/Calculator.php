@@ -18,8 +18,6 @@ function run()
     ];
 
     $generatorQuestion = function () use ($operators): string {
-        line('What is the result of the expression?');
-
         $lastIdxOperator = count($operators) - 1;
         $idxOperator = rand(0, $lastIdxOperator);
         $operator = array_keys($operators)[$idxOperator];
@@ -42,6 +40,7 @@ function run()
     };
 
     Engine\gameLoop(
+        'What is the result of the expression?',
         $generatorQuestion,
         $generatorCorrectAnswer,
         $checkerAnswer

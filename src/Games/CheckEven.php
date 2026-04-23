@@ -17,8 +17,6 @@ function run(): void
     ];
 
     $generatorQuestion = function () {
-        line('Answer "yes" if the number is even, otherwise answer "no".');
-
         $randomNumber = rand(0, 100);
         return $randomNumber;
     };
@@ -33,6 +31,7 @@ function run(): void
     };
 
     Engine\gameLoop(
+        'Answer "yes" if the number is even, otherwise answer "no".',
         $generatorQuestion,
         $generatorCorrectAnswer,
         $checkerAnswer

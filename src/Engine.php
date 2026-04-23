@@ -45,11 +45,14 @@ function tryAgain($userAnswer, $correctAnswer, string $name): void
 }
 
 function gameLoop(
+    string   $textGoal,
     callable $generatorQuestion,
     callable $generatorCorrectAnswer,
     callable $checkerAnswer
 ): void {
     $name = welcomeUser();
+
+    line($textGoal);
 
     $countAttempts = 3;
 
