@@ -15,3 +15,6 @@ brain-even: bin/brain-even
 
 brain-calc: bin/brain-calc
 	./bin/brain-calc
+
+brain-gcd: bin/brain-gcd
+	./bin/brain-gcd
