@@ -4,28 +4,23 @@ declare(strict_types=1);
 
 namespace BrainGames\Calculator;
 
+use BrainGames\Engine;
+
 use function cli\line;
 use function cli\prompt;
 
 function run()
 {
-    line("Welcome to the Brain Game!");
-
-    $name = prompt("May I have your name?", false, ' ');
-    line("Hello, %s!", $name);
-
-    line('What is the result of the expression?');
-
     $operators = [
         '+' => fn ($a, $b) => $a + $b,
         '-' => fn ($a, $b) => $a - $b,
         '*' => fn ($a, $b) => $a * $b,
     ];
 
-    $countAttempts = 3;
-    $lastIdxOperator = count($operators) - 1;
+    $generatorQuestion = function () use ($operators): string {
+        line('What is the result of the expression?');
 
-    for ($i = 0; $i < $countAttempts; $i++) {
+        $lastIdxOperator = count($operators) - 1;
         $idxOperator = rand(0, $lastIdxOperator);
         $operator = array_keys($operators)[$idxOperator];
 
@@ -33,24 +28,22 @@ function run()
         $rightOperand = rand(0, 25);
 
         $expression = "{$leftOperand} {$operator} {$rightOperand}";
-        line('Question: %s', $expression);
+        return $expression;
+    };
 
-        $answer = prompt("Your answer");
+    $generatorCorrectAnswer = function (string $question) use ($operators) {
+        [$leftOperand, $operator, $rightOperand] = explode(' ', $question);
 
-        $correctAnswer = $operators[$operator]($leftOperand, $rightOperand);
-        if ($correctAnswer != $answer) {
-            line(
-                "'%s' is wrong answer ;(. Correct answer was '%s'.",
-                $answer,
-                $correctAnswer
-            );
+        return $operators[$operator]($leftOperand, $rightOperand);
+    };
 
-            line("Let's try again, %s!", $name);
-            return;
-        }
+    $checkerAnswer = function ($userAnswer, $correctAnswer) {
+        return $correctAnswer == $userAnswer;
+    };
 
-        line("Correct!");
-    }
-
-    line("Congratulations, %s!", $name);
+    Engine\gameLoop(
+        $generatorQuestion,
+        $generatorCorrectAnswer,
+        $checkerAnswer
+    );
 }

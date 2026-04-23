@@ -13,6 +13,7 @@
     "autoload": {
         "files": [
             "src/Cli.php",
+            "src/Engine.php",
             "src/Games/CheckEven.php",
             "src/Games/Calculator.php"
         ]

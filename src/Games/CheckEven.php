@@ -4,43 +4,37 @@ declare(strict_types=1);
 
 namespace BrainGames\CheckEven;
 
+use BrainGames\Engine;
+
 use function cli\line;
 use function cli\prompt;
 
 function run(): void
 {
-    line("Welcome to the Brain Game!");
-
-    $name = prompt("May I have your name?", false, ' ');
-    line("Hello, %s!", $name);
-
-    line('Answer "yes" if the number is even, otherwise answer "no".');
-
-    $countAttempts = 3;
     $expectedAnswers = [
         'no',
         'yes'
     ];
 
-    for ($i = 0; $i < $countAttempts; $i++) {
+    $generatorQuestion = function () {
+        line('Answer "yes" if the number is even, otherwise answer "no".');
+
         $randomNumber = rand(0, 100);
+        return $randomNumber;
+    };
+
+    $generatorCorrectAnswer = function (int $randomNumber) use ($expectedAnswers) {
         $isEven = $randomNumber % 2 == 0;
-        line('Question: %d', $randomNumber);
+        return $expectedAnswers[(int)$isEven];
+    };
 
-        $answer = prompt("Your answer");
-        $correctAnswer = $expectedAnswers[(int)$isEven];
-        if (!in_array($answer, $expectedAnswers) || $correctAnswer != $answer) {
-            line(
-                "'%s' is wrong answer ;(. Correct answer was '%s'. Let's try again, %s!",
-                $answer,
-                $correctAnswer,
-                $name
-            );
-            return;
-        }
+    $checkerAnswer = function ($userAnswer, $correctAnswer) use ($expectedAnswers) {
+        return in_array($userAnswer, $expectedAnswers) && $correctAnswer == $userAnswer;
+    };
 
-        line("Correct!");
-    }
-
-    line("Congratulations, %s!", $name);
+    Engine\gameLoop(
+        $generatorQuestion,
+        $generatorCorrectAnswer,
+        $checkerAnswer
+    );
 }
