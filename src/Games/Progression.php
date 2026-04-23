@@ -47,7 +47,7 @@ function run(): void
             }
         }
 
-        [$firstNumber, $secondNumber] = $adjacentElements;
+        [$firstNumber, $secondNumber] = array_map('intval', $adjacentElements);
         $step = $secondNumber - $firstNumber;
 
         $correctAnswer = $foundIdx === 0
