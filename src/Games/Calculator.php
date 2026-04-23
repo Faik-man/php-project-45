@@ -19,11 +19,11 @@ function run()
 
     $generatorQuestion = function () use ($operators): string {
         $lastIdxOperator = count($operators) - 1;
-        $idxOperator = rand(0, $lastIdxOperator);
+        $idxOperator = random_int(0, $lastIdxOperator);
         $operator = array_keys($operators)[$idxOperator];
 
-        $leftOperand = rand(0, 25);
-        $rightOperand = rand(0, 25);
+        $leftOperand = random_int(0, 25);
+        $rightOperand = random_int(0, 25);
 
         $expression = "{$leftOperand} {$operator} {$rightOperand}";
         return $expression;

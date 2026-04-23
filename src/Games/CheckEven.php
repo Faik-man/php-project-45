@@ -17,7 +17,7 @@ function run(): void
     ];
 
     $generatorQuestion = function () {
-        $randomNumber = rand(0, 100);
+        $randomNumber = random_int(0, 100);
         return $randomNumber;
     };
 

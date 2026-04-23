@@ -45,7 +45,7 @@ function tryAgain($userAnswer, $correctAnswer, string $name): void
 }
 
 function gameLoop(
-    string   $textGoal,
+    string $textGoal,
     callable $generatorQuestion,
     callable $generatorCorrectAnswer,
     callable $checkerAnswer
