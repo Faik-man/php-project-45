@@ -12,3 +12,4 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Faik-man_php-project-45&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Faik-man_php-project-45)
 
 [Проверка на чётность](https://asciinema.org/a/PG2Ou5DHHp7uepk1)
+[Калькулятор](https://asciinema.org/a/mJ9jrcL7fn0CzdhO)
