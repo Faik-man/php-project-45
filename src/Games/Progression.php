@@ -51,8 +51,8 @@ function run(): void
         $step = $secondNumber - $firstNumber;
 
         $correctAnswer = $foundIdx === 0
-            ? $progression[$foundIdx + 1] - $step
-            : $progression[$foundIdx - 1] + $step;
+            ? (int)$progression[$foundIdx + 1] - $step
+            : (int)$progression[$foundIdx - 1] + $step;
 
         return strval($correctAnswer);
     };
