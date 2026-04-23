@@ -15,7 +15,7 @@ function isPrime(int $number): bool
         return false;
     }
 
-    if ($number == 2) {
+    if ($number === 2) {
         return true;
     }
 
@@ -44,15 +44,15 @@ function run(): void
         'yes'
     ];
 
-    $generatorCorrectAnswer = function (int $number) use ($expectedAnswers) {
-        $idx = (int)isPrime($number);
+    $generatorCorrectAnswer = function (string $number) use ($expectedAnswers): string {
+        $idx = (int)isPrime((int)$number);
         $correctAnswer = $expectedAnswers[$idx];
 
-        return $correctAnswer;
+        return strval($correctAnswer);
     };
 
-    $checkerAnswer = function ($userAnswer, $correctAnswer) use ($expectedAnswers) {
-        return in_array($userAnswer, $expectedAnswers) && $correctAnswer == $userAnswer;
+    $checkerAnswer = function (string $userAnswer, string $correctAnswer) use ($expectedAnswers): bool {
+        return in_array($userAnswer, $expectedAnswers, true) && $correctAnswer === $userAnswer;
     };
 
     Engine\gameLoop(

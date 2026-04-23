@@ -34,13 +34,13 @@ function run(): void
         return implode(' ', $progression);
     };
 
-    $generatorCorrectAnswer = function (string $question) {
+    $generatorCorrectAnswer = function (string $question): string {
         $progression = explode(' ', $question);
-        $foundIdx = array_search('..', $progression);
+        $foundIdx = (int)array_search('..', $progression, true);
 
         $adjacentElements = [];
         for ($i = 0, $size = count($progression); $i < $size && count($adjacentElements) <= 2; $i++) {
-            if ($i == $foundIdx) {
+            if ($i === $foundIdx) {
                 $adjacentElements = [];
             } else {
                 $adjacentElements[] = $progression[$i];
@@ -50,15 +50,15 @@ function run(): void
         [$firstNumber, $secondNumber] = $adjacentElements;
         $step = $secondNumber - $firstNumber;
 
-        $correctAnswer = $foundIdx == 0
+        $correctAnswer = $foundIdx === 0
             ? $progression[$foundIdx + 1] - $step
             : $progression[$foundIdx - 1] + $step;
 
-        return $correctAnswer;
+        return strval($correctAnswer);
     };
 
-    $checkerAnswer = function ($userAnswer, $correctAnswer) {
-        return $correctAnswer == $userAnswer;
+    $checkerAnswer = function (string $userAnswer, string $correctAnswer): bool {
+        return $correctAnswer === $userAnswer;
     };
 
     Engine\gameLoop(

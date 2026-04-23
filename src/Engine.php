@@ -17,7 +17,7 @@ function welcomeUser(): string
     return $name;
 }
 
-function askQuestion($question)
+function askQuestion(string $question): void
 {
     line('Question: %s', $question);
 }
@@ -33,7 +33,7 @@ function congratulateUser(string $name): void
     line("Congratulations, %s!", $name);
 }
 
-function tryAgain($userAnswer, $correctAnswer, string $name): void
+function tryAgain(string $userAnswer, string $correctAnswer, string $name): void
 {
     line(
         "'%s' is wrong answer ;(. Correct answer was '%s'.",

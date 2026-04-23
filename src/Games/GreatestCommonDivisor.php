@@ -17,20 +17,20 @@ function run(): void
         return "{$firstNumber} {$secondNumber}";
     };
 
-    $generatorCorrectAnswer = function ($numbers) {
+    $generatorCorrectAnswer = function ($numbers): string {
         [$firstNumber, $secondNumber] = explode(' ', $numbers);
 
-        while ($secondNumber != 0) {
+        while ($secondNumber !== 0) {
             $rest = $firstNumber % $secondNumber;
             $firstNumber = $secondNumber;
             $secondNumber = $rest;
         }
 
-        return $firstNumber;
+        return strval($firstNumber);
     };
 
-    $checkerAnswer = function ($userAnswer, $correctAnswer) {
-        return $correctAnswer == $userAnswer;
+    $checkerAnswer = function (string $userAnswer, string $correctAnswer): bool {
+        return $correctAnswer === $userAnswer;
     };
 
     Engine\gameLoop(

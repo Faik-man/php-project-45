@@ -9,7 +9,7 @@ use BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
-function run()
+function run(): void
 {
     $operators = [
         '+' => fn ($a, $b) => $a + $b,
@@ -29,14 +29,14 @@ function run()
         return $expression;
     };
 
-    $generatorCorrectAnswer = function (string $question) use ($operators) {
+    $generatorCorrectAnswer = function (string $question) use ($operators): string {
         [$leftOperand, $operator, $rightOperand] = explode(' ', $question);
 
-        return $operators[$operator]($leftOperand, $rightOperand);
+        return strval($operators[$operator]($leftOperand, $rightOperand));
     };
 
-    $checkerAnswer = function ($userAnswer, $correctAnswer) {
-        return $correctAnswer == $userAnswer;
+    $checkerAnswer = function (string $userAnswer, string $correctAnswer) {
+        return $correctAnswer === $userAnswer;
     };
 
     Engine\gameLoop(

@@ -21,13 +21,13 @@ function run(): void
         return $randomNumber;
     };
 
-    $generatorCorrectAnswer = function (int $randomNumber) use ($expectedAnswers) {
-        $isEven = $randomNumber % 2 == 0;
-        return $expectedAnswers[(int)$isEven];
+    $generatorCorrectAnswer = function (string $randomNumber) use ($expectedAnswers): string {
+        $isEven = ((int)$randomNumber) % 2 === 0;
+        return strval($expectedAnswers[(int)$isEven]);
     };
 
-    $checkerAnswer = function ($userAnswer, $correctAnswer) use ($expectedAnswers) {
-        return in_array($userAnswer, $expectedAnswers) && $correctAnswer == $userAnswer;
+    $checkerAnswer = function (string $userAnswer, string $correctAnswer) use ($expectedAnswers): bool {
+        return in_array($userAnswer, $expectedAnswers, true) && $correctAnswer === $userAnswer;
     };
 
     Engine\gameLoop(
