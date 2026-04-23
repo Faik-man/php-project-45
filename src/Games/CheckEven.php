@@ -16,9 +16,9 @@ function run(): void
         'yes'
     ];
 
-    $generatorQuestion = function () {
+    $generatorQuestion = function (): string {
         $randomNumber = random_int(0, 100);
-        return $randomNumber;
+        return strval($randomNumber);
     };
 
     $generatorCorrectAnswer = function (string $randomNumber) use ($expectedAnswers): string {

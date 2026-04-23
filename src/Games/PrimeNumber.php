@@ -34,9 +34,9 @@ function isPrime(int $number): bool
 
 function run(): void
 {
-    $generatorQuestion = function () {
+    $generatorQuestion = function (): string {
         $randomNumber = random_int(0, 100);
-        return $randomNumber;
+        return (string)$randomNumber;
     };
 
     $expectedAnswers = [
