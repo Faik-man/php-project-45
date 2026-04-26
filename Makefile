@@ -7,6 +7,9 @@ validate:
 lint:
 	composer exec --verbose phpcs -- --standard=PSR12 src bin
 
+list: bin
+	ls ./bin
+
 brain-games: bin/brain-games
 	./bin/brain-games
 
