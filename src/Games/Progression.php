@@ -22,13 +22,22 @@ function createProgression(int $start, int $length, int $step): array
 function run(): void
 {
     $generatorQuestion = function (): string {
-        $start = random_int(0, 100);
-        $length = random_int(5, 10);
-        $step = random_int(1, 10);
+        $minStart = 0;
+        $maxStart = 100;
+        $start = random_int($minStart, $maxStart);
+
+        $minLength = 5;
+        $maxLength = 10;
+        $length = random_int($minLength, $maxLength);
+
+        $minStep = 1;
+        $maxStep = 10;
+        $step = random_int($minStep, $maxStep);
 
         $progression = createProgression($start, $length, $step);
 
-        $idxHideElement = random_int(0, $length - 1);
+        $lastIdxProgression = $length - 1;
+        $idxHideElement = random_int(0, $lastIdxProgression);
         $progression[$idxHideElement] = '..';
 
         return implode(' ', $progression);

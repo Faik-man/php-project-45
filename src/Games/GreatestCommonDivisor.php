@@ -12,8 +12,10 @@ use function cli\prompt;
 function run(): void
 {
     $generatorQuestion = function (): string {
-        $firstNumber = random_int(0, 100);
-        $secondNumber = random_int(0, 100);
+        $minNumber = 0;
+        $maxNumber = 100;
+        $firstNumber = random_int($minNumber, $maxNumber);
+        $secondNumber = random_int($minNumber, $maxNumber);
         return "{$firstNumber} {$secondNumber}";
     };
 

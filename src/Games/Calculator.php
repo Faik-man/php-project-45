@@ -22,8 +22,10 @@ function run(): void
         $idxOperator = random_int(0, $lastIdxOperator);
         $operator = array_keys($operators)[$idxOperator];
 
-        $leftOperand = random_int(0, 25);
-        $rightOperand = random_int(0, 25);
+        $minNumber = 0;
+        $maxNumber = 25;
+        $leftOperand = random_int($minNumber, $maxNumber);
+        $rightOperand = random_int($minNumber, $maxNumber);
 
         return "{$leftOperand} {$operator} {$rightOperand}";
     };
