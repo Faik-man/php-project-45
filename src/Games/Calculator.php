@@ -25,8 +25,7 @@ function run(): void
         $leftOperand = random_int(0, 25);
         $rightOperand = random_int(0, 25);
 
-        $expression = "{$leftOperand} {$operator} {$rightOperand}";
-        return $expression;
+        return "{$leftOperand} {$operator} {$rightOperand}";
     };
 
     $generatorCorrectAnswer = function (string $question) use ($operators): string {

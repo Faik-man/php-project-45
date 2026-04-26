@@ -24,8 +24,7 @@ function askQuestion(string $question): void
 
 function makeAnswer(): string
 {
-    $answer = prompt("Your answer");
-    return $answer;
+    return prompt("Your answer");
 }
 
 function congratulateUser(string $name): void
