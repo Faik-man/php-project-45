@@ -45,7 +45,7 @@ function run(): void
         $idx = (int)isPrime((int)$number);
         $correctAnswer = $expectedAnswers[$idx];
 
-        return strval($correctAnswer);
+        return $correctAnswer;
     };
 
     gameLoop(

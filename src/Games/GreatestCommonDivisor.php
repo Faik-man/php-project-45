@@ -25,7 +25,7 @@ function run(): void
             $secondNumber = $rest;
         }
 
-        return strval($firstNumber);
+        return (string)$firstNumber;
     };
 
     gameLoop(

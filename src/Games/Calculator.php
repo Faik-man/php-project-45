@@ -30,7 +30,7 @@ function run(): void
     $generatorCorrectAnswer = function (string $question) use ($operators): string {
         [$leftOperand, $operator, $rightOperand] = explode(' ', $question);
 
-        return strval($operators[$operator]($leftOperand, $rightOperand));
+        return (string)$operators[$operator]($leftOperand, $rightOperand);
     };
 
     gameLoop(

@@ -15,12 +15,12 @@ function run(): void
 
     $generatorQuestion = function (): string {
         $randomNumber = random_int(0, 100);
-        return strval($randomNumber);
+        return (string)$randomNumber;
     };
 
     $generatorCorrectAnswer = function (string $randomNumber) use ($expectedAnswers): string {
         $isEven = ((int)$randomNumber) % 2 === 0;
-        return strval($expectedAnswers[(int)$isEven]);
+        return $expectedAnswers[(int)$isEven];
     };
 
     gameLoop(

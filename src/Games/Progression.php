@@ -60,7 +60,7 @@ function run(): void
             ? (int)$progression[$foundIdx + 1] - $step
             : (int)$progression[$foundIdx - 1] + $step;
 
-        return strval($correctAnswer);
+        return (string)$correctAnswer;
     };
 
     gameLoop(
