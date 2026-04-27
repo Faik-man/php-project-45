@@ -6,18 +6,32 @@ namespace BrainGames\Calculator;
 
 use function BrainGames\Engine\gameLoop;
 
+function calc(string $operator, int $leftOperand, int $rightOperand): int|false
+{
+    switch ($operator) {
+        case '+':
+            return $leftOperand + $rightOperand;
+        case '-':
+            return $leftOperand - $rightOperand;
+        case '*':
+            return $leftOperand * $rightOperand;
+    }
+
+    return false;
+}
+
 function run(): void
 {
     $operators = [
-        '+' => fn ($a, $b) => $a + $b,
-        '-' => fn ($a, $b) => $a - $b,
-        '*' => fn ($a, $b) => $a * $b,
+        '+',
+        '-',
+        '*'
     ];
 
     $generatorQuestion = function () use ($operators): string {
         $lastIdxOperator = count($operators) - 1;
         $idxOperator = random_int(0, $lastIdxOperator);
-        $operator = array_keys($operators)[$idxOperator];
+        $operator = $operators[$idxOperator];
 
         $minNumber = 0;
         $maxNumber = 25;
@@ -27,10 +41,10 @@ function run(): void
         return "{$leftOperand} {$operator} {$rightOperand}";
     };
 
-    $generatorCorrectAnswer = function (string $question) use ($operators): string {
+    $generatorCorrectAnswer = function (string $question): string {
         [$leftOperand, $operator, $rightOperand] = explode(' ', $question);
 
-        return (string)$operators[$operator]($leftOperand, $rightOperand);
+        return (string)calc($operator, (int)$leftOperand, (int)$rightOperand);
     };
 
     gameLoop(

@@ -6,6 +6,11 @@ namespace BrainGames\CheckEven;
 
 use function BrainGames\Engine\gameLoop;
 
+function isEven(int $number): bool
+{
+    return $number % 2 === 0;
+}
+
 function run(): void
 {
     $expectedAnswers = [
@@ -19,8 +24,7 @@ function run(): void
     };
 
     $generatorCorrectAnswer = function (string $randomNumber) use ($expectedAnswers): string {
-        $isEven = ((int)$randomNumber) % 2 === 0;
-        return $expectedAnswers[(int)$isEven];
+        return $expectedAnswers[(int)isEven((int)$randomNumber)];
     };
 
     gameLoop(

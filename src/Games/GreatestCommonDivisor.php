@@ -6,6 +6,17 @@ namespace BrainGames\GreatestCommonDivisor;
 
 use function BrainGames\Engine\gameLoop;
 
+function getGcd(int $firstNumber, int $secondNumber): int
+{
+    while ($secondNumber !== 0) {
+        $rest = $firstNumber % $secondNumber;
+        $firstNumber = $secondNumber;
+        $secondNumber = $rest;
+    }
+
+    return $firstNumber;
+}
+
 function run(): void
 {
     $generatorQuestion = function (): string {
@@ -17,15 +28,9 @@ function run(): void
     };
 
     $generatorCorrectAnswer = function ($numbers): string {
-        [$firstNumber, $secondNumber] = explode(' ', $numbers);
+        [$firstNumber, $secondNumber] = array_map('intval', explode(' ', $numbers));
 
-        while ($secondNumber !== 0) {
-            $rest = $firstNumber % $secondNumber;
-            $firstNumber = $secondNumber;
-            $secondNumber = $rest;
-        }
-
-        return (string)$firstNumber;
+        return (string)getGcd($firstNumber, $secondNumber);
     };
 
     gameLoop(
