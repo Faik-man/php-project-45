@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace BrainGames\GreatestCommonDivisor;
 
-use BrainGames\Engine;
-
-use function cli\line;
-use function cli\prompt;
+use function BrainGames\Engine\gameLoop;
 
 function run(): void
 {
@@ -35,7 +32,7 @@ function run(): void
         return $correctAnswer === $userAnswer;
     };
 
-    Engine\gameLoop(
+    gameLoop(
         'Find the greatest common divisor of given numbers.',
         $generatorQuestion,
         $generatorCorrectAnswer,

@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace BrainGames\Calculator;
 
-use BrainGames\Engine;
-
-use function cli\line;
-use function cli\prompt;
+use function BrainGames\Engine\gameLoop;
 
 function run(): void
 {
@@ -40,7 +37,7 @@ function run(): void
         return $correctAnswer === $userAnswer;
     };
 
-    Engine\gameLoop(
+    gameLoop(
         'What is the result of the expression?',
         $generatorQuestion,
         $generatorCorrectAnswer,

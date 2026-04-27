@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace BrainGames\Progression;
 
-use BrainGames\Engine;
-
-use function cli\line;
-use function cli\prompt;
+use function BrainGames\Engine\gameLoop;
 
 function createProgression(int $start, int $length, int $step): array
 {
@@ -70,7 +67,7 @@ function run(): void
         return $correctAnswer === $userAnswer;
     };
 
-    Engine\gameLoop(
+    gameLoop(
         'What number is missing in the progression?',
         $generatorQuestion,
         $generatorCorrectAnswer,

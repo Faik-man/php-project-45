@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace BrainGames\PrimeNumber;
 
-use BrainGames\Engine;
-
-use function cli\line;
-use function cli\prompt;
+use function BrainGames\Engine\gameLoop;
 
 function isPrime(int $number): bool
 {
@@ -55,7 +52,7 @@ function run(): void
         return in_array($userAnswer, $expectedAnswers, true) && $correctAnswer === $userAnswer;
     };
 
-    Engine\gameLoop(
+    gameLoop(
         'Answer "yes" if given number is prime. Otherwise answer "no".',
         $generatorQuestion,
         $generatorCorrectAnswer,

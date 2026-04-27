@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace BrainGames\CheckEven;
 
-use BrainGames\Engine;
-
-use function cli\line;
-use function cli\prompt;
+use function BrainGames\Engine\gameLoop;
 
 function run(): void
 {
@@ -30,7 +27,7 @@ function run(): void
         return in_array($userAnswer, $expectedAnswers, true) && $correctAnswer === $userAnswer;
     };
 
-    Engine\gameLoop(
+    gameLoop(
         'Answer "yes" if the number is even, otherwise answer "no".',
         $generatorQuestion,
         $generatorCorrectAnswer,
