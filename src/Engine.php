@@ -7,6 +7,8 @@ namespace BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
+const MAX_ATTEMPTS = 3;
+
 function welcomeUser(): string
 {
     line("Welcome to the Brain Games!");
@@ -53,9 +55,7 @@ function gameLoop(
 
     line($textGoal);
 
-    $countAttempts = 3;
-
-    for ($i = 0; $i < $countAttempts; $i++) {
+    for ($i = 0; $i < MAX_ATTEMPTS; $i++) {
         $question = $generatorQuestion();
         askQuestion($question);
 
