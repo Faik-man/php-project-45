@@ -48,14 +48,9 @@ function run(): void
         return strval($correctAnswer);
     };
 
-    $checkerAnswer = function (string $userAnswer, string $correctAnswer) use ($expectedAnswers): bool {
-        return in_array($userAnswer, $expectedAnswers, true) && $correctAnswer === $userAnswer;
-    };
-
     gameLoop(
         'Answer "yes" if given number is prime. Otherwise answer "no".',
         $generatorQuestion,
-        $generatorCorrectAnswer,
-        $checkerAnswer
+        $generatorCorrectAnswer
     );
 }

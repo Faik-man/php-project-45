@@ -28,14 +28,9 @@ function run(): void
         return strval($firstNumber);
     };
 
-    $checkerAnswer = function (string $userAnswer, string $correctAnswer): bool {
-        return $correctAnswer === $userAnswer;
-    };
-
     gameLoop(
         'Find the greatest common divisor of given numbers.',
         $generatorQuestion,
-        $generatorCorrectAnswer,
-        $checkerAnswer
+        $generatorCorrectAnswer
     );
 }

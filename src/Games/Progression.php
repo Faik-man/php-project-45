@@ -63,14 +63,9 @@ function run(): void
         return strval($correctAnswer);
     };
 
-    $checkerAnswer = function (string $userAnswer, string $correctAnswer): bool {
-        return $correctAnswer === $userAnswer;
-    };
-
     gameLoop(
         'What number is missing in the progression?',
         $generatorQuestion,
-        $generatorCorrectAnswer,
-        $checkerAnswer
+        $generatorCorrectAnswer
     );
 }

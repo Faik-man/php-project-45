@@ -12,8 +12,7 @@ const MAX_ATTEMPTS = 3;
 function gameLoop(
     string $textGoal,
     callable $generatorQuestion,
-    callable $generatorCorrectAnswer,
-    callable $checkerAnswer
+    callable $generatorCorrectAnswer
 ): void {
     line("Welcome to the Brain Games!");
 
@@ -29,7 +28,7 @@ function gameLoop(
         $userAnswer = prompt("Your answer");
 
         $correctAnswer = $generatorCorrectAnswer($question);
-        if (!$checkerAnswer($userAnswer, $correctAnswer)) {
+        if ($correctAnswer !== $userAnswer) {
             line(
                 "'%s' is wrong answer ;(. Correct answer was '%s'.",
                 $userAnswer,

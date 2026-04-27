@@ -23,14 +23,9 @@ function run(): void
         return strval($expectedAnswers[(int)$isEven]);
     };
 
-    $checkerAnswer = function (string $userAnswer, string $correctAnswer) use ($expectedAnswers): bool {
-        return in_array($userAnswer, $expectedAnswers, true) && $correctAnswer === $userAnswer;
-    };
-
     gameLoop(
         'Answer "yes" if the number is even, otherwise answer "no".',
         $generatorQuestion,
-        $generatorCorrectAnswer,
-        $checkerAnswer
+        $generatorCorrectAnswer
     );
 }

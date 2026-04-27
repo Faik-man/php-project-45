@@ -33,14 +33,9 @@ function run(): void
         return strval($operators[$operator]($leftOperand, $rightOperand));
     };
 
-    $checkerAnswer = function (string $userAnswer, string $correctAnswer) {
-        return $correctAnswer === $userAnswer;
-    };
-
     gameLoop(
         'What is the result of the expression?',
         $generatorQuestion,
-        $generatorCorrectAnswer,
-        $checkerAnswer
+        $generatorCorrectAnswer
     );
 }
