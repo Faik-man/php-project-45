@@ -6,6 +6,25 @@ namespace BrainGames\PrimeNumber;
 
 use function BrainGames\Engine\gameLoop;
 
+use const BrainGames\Engine\MAX_ATTEMPTS;
+
+function run(): void
+{
+    $questions = [];
+    $correctAnswers = [];
+    for ($i = 0; $i < MAX_ATTEMPTS; $i++) {
+        $randomNumber = random_int(0, 100);
+        $questions[] = (string)$randomNumber;
+        $correctAnswers[] = isPrime($randomNumber) ? 'yes' : 'no';
+    }
+
+    gameLoop([
+        'Answer "yes" if given number is prime. Otherwise answer "no".',
+        $questions,
+        $correctAnswers
+    ]);
+}
+
 function isPrime(int $number): bool
 {
     if ($number < 2) {
@@ -27,30 +46,4 @@ function isPrime(int $number): bool
     }
 
     return true;
-}
-
-function run(): void
-{
-    $generatorQuestion = function (): string {
-        $randomNumber = random_int(0, 100);
-        return (string)$randomNumber;
-    };
-
-    $expectedAnswers = [
-        'no',
-        'yes'
-    ];
-
-    $generatorCorrectAnswer = function (string $number) use ($expectedAnswers): string {
-        $idx = (int)isPrime((int)$number);
-        $correctAnswer = $expectedAnswers[$idx];
-
-        return $correctAnswer;
-    };
-
-    gameLoop(
-        'Answer "yes" if given number is prime. Otherwise answer "no".',
-        $generatorQuestion,
-        $generatorCorrectAnswer
-    );
 }

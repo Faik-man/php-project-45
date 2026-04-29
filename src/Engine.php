@@ -10,24 +10,22 @@ use function cli\prompt;
 const MAX_ATTEMPTS = 3;
 
 function gameLoop(
-    string $textGoal,
-    callable $generatorQuestion,
-    callable $generatorCorrectAnswer
+    array $gameData
 ): void {
+    [$description, $questions, $correctAnswers] = $gameData;
+
     line("Welcome to the Brain Games!");
 
     $name = prompt("May I have your name?", false, ' ');
     line("Hello, %s!", $name);
 
-    line($textGoal);
+    line($description);
 
     for ($i = 0; $i < MAX_ATTEMPTS; $i++) {
-        $question = $generatorQuestion();
-        line('Question: %s', $question);
+        line('Question: %s', $questions[$i]);
 
+        $correctAnswer = $correctAnswers[$i];
         $userAnswer = prompt("Your answer");
-
-        $correctAnswer = $generatorCorrectAnswer($question);
         if ($correctAnswer !== $userAnswer) {
             line(
                 "'%s' is wrong answer ;(. Correct answer was '%s'.",

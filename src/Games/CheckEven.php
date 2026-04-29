@@ -6,30 +6,26 @@ namespace BrainGames\CheckEven;
 
 use function BrainGames\Engine\gameLoop;
 
-function isEven(int $number): bool
-{
-    return $number % 2 === 0;
-}
+use const BrainGames\Engine\MAX_ATTEMPTS;
 
 function run(): void
 {
-    $expectedAnswers = [
-        'no',
-        'yes'
-    ];
-
-    $generatorQuestion = function (): string {
+    $questions = [];
+    $correctAnswers = [];
+    for ($i = 0; $i < MAX_ATTEMPTS; $i++) {
         $randomNumber = random_int(0, 100);
-        return (string)$randomNumber;
-    };
+        $questions[] = $randomNumber;
+        $correctAnswers[] = isEven($randomNumber) ? 'yes' : 'no';
+    }
 
-    $generatorCorrectAnswer = function (string $randomNumber) use ($expectedAnswers): string {
-        return $expectedAnswers[(int)isEven((int)$randomNumber)];
-    };
-
-    gameLoop(
+    gameLoop([
         'Answer "yes" if the number is even, otherwise answer "no".',
-        $generatorQuestion,
-        $generatorCorrectAnswer
-    );
+        $questions,
+        $correctAnswers
+    ]);
+}
+
+function isEven(int $number): bool
+{
+    return $number % 2 === 0;
 }

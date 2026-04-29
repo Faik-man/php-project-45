@@ -6,6 +6,40 @@ namespace BrainGames\Calculator;
 
 use function BrainGames\Engine\gameLoop;
 
+use const BrainGames\Engine\MAX_ATTEMPTS;
+
+function run(): void
+{
+    $operators = [
+        '+',
+        '-',
+        '*'
+    ];
+
+    $lastIdxOperator = count($operators) - 1;
+    $minNumber = 0;
+    $maxNumber = 25;
+
+    $questions = [];
+    $correctAnswers = [];
+    for ($i = 0; $i < MAX_ATTEMPTS; $i++) {
+        $idxOperator = random_int(0, $lastIdxOperator);
+        $operator = $operators[$idxOperator];
+
+        $leftOperand = random_int($minNumber, $maxNumber);
+        $rightOperand = random_int($minNumber, $maxNumber);
+
+        $questions[] = "{$leftOperand} {$operator} {$rightOperand}";
+        $correctAnswers[] = (string)calc($operator, $leftOperand, $rightOperand);
+    }
+
+    gameLoop([
+        'What is the result of the expression?',
+        $questions,
+        $correctAnswers,
+    ]);
+}
+
 function calc(string $operator, int $leftOperand, int $rightOperand): int|false
 {
     switch ($operator) {
@@ -18,38 +52,4 @@ function calc(string $operator, int $leftOperand, int $rightOperand): int|false
     }
 
     return false;
-}
-
-function run(): void
-{
-    $operators = [
-        '+',
-        '-',
-        '*'
-    ];
-
-    $generatorQuestion = function () use ($operators): string {
-        $lastIdxOperator = count($operators) - 1;
-        $idxOperator = random_int(0, $lastIdxOperator);
-        $operator = $operators[$idxOperator];
-
-        $minNumber = 0;
-        $maxNumber = 25;
-        $leftOperand = random_int($minNumber, $maxNumber);
-        $rightOperand = random_int($minNumber, $maxNumber);
-
-        return "{$leftOperand} {$operator} {$rightOperand}";
-    };
-
-    $generatorCorrectAnswer = function (string $question): string {
-        [$leftOperand, $operator, $rightOperand] = explode(' ', $question);
-
-        return (string)calc($operator, (int)$leftOperand, (int)$rightOperand);
-    };
-
-    gameLoop(
-        'What is the result of the expression?',
-        $generatorQuestion,
-        $generatorCorrectAnswer
-    );
 }

@@ -6,6 +6,44 @@ namespace BrainGames\Progression;
 
 use function BrainGames\Engine\gameLoop;
 
+use const BrainGames\Engine\MAX_ATTEMPTS;
+
+function run(): void
+{
+    $minStart = 0;
+    $maxStart = 100;
+
+    $minLength = 5;
+    $maxLength = 10;
+
+    $minStep = 1;
+    $maxStep = 10;
+
+    $questions = [];
+    $correctAnswers = [];
+    for ($i = 0; $i < MAX_ATTEMPTS; $i++) {
+        $start = random_int($minStart, $maxStart);
+        $length = random_int($minLength, $maxLength);
+        $step = random_int($minStep, $maxStep);
+
+        $progression = createProgression($start, $length, $step);
+
+        $lastIdxProgression = $length - 1;
+        $idxHideElement = random_int(0, $lastIdxProgression);
+        $answer = $progression[$idxHideElement];
+        $progression[$idxHideElement] = '..';
+
+        $questions[] = implode(' ', $progression);
+        $correctAnswers[] = (string)$answer;
+    }
+
+    gameLoop([
+        'What number is missing in the progression?',
+        $questions,
+        $correctAnswers
+    ]);
+}
+
 function createProgression(int $start, int $length, int $step): array
 {
     $progression = [];
@@ -14,58 +52,4 @@ function createProgression(int $start, int $length, int $step): array
     }
 
     return $progression;
-}
-
-function run(): void
-{
-    $generatorQuestion = function (): string {
-        $minStart = 0;
-        $maxStart = 100;
-        $start = random_int($minStart, $maxStart);
-
-        $minLength = 5;
-        $maxLength = 10;
-        $length = random_int($minLength, $maxLength);
-
-        $minStep = 1;
-        $maxStep = 10;
-        $step = random_int($minStep, $maxStep);
-
-        $progression = createProgression($start, $length, $step);
-
-        $lastIdxProgression = $length - 1;
-        $idxHideElement = random_int(0, $lastIdxProgression);
-        $progression[$idxHideElement] = '..';
-
-        return implode(' ', $progression);
-    };
-
-    $generatorCorrectAnswer = function (string $question): string {
-        $progression = explode(' ', $question);
-        $foundIdx = (int)array_search('..', $progression, true);
-
-        $adjacentElements = [];
-        for ($i = 0, $size = count($progression); $i < $size && count($adjacentElements) <= 2; $i++) {
-            if ($i === $foundIdx) {
-                $adjacentElements = [];
-            } else {
-                $adjacentElements[] = $progression[$i];
-            }
-        }
-
-        [$firstNumber, $secondNumber] = array_map('intval', $adjacentElements);
-        $step = $secondNumber - $firstNumber;
-
-        $correctAnswer = $foundIdx === 0
-            ? (int)$progression[$foundIdx + 1] - $step
-            : (int)$progression[$foundIdx - 1] + $step;
-
-        return (string)$correctAnswer;
-    };
-
-    gameLoop(
-        'What number is missing in the progression?',
-        $generatorQuestion,
-        $generatorCorrectAnswer
-    );
 }
