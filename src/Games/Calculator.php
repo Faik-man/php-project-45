@@ -42,14 +42,20 @@ function run(): void
 
 function calc(string $operator, int $leftOperand, int $rightOperand): int|false
 {
+    $result = false;
     switch ($operator) {
         case '+':
-            return $leftOperand + $rightOperand;
+            $result = $leftOperand + $rightOperand;
+            break;
         case '-':
-            return $leftOperand - $rightOperand;
+            $result = $leftOperand - $rightOperand;
+            break;
         case '*':
-            return $leftOperand * $rightOperand;
+            $result = $leftOperand * $rightOperand;
+            break;
+        default:
+            break;
     }
 
-    return false;
+    return $result;
 }
