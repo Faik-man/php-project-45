@@ -10,22 +10,30 @@ use const BrainGames\Engine\MAX_ROUNDS;
 
 const GAME_DESCRIPTION = 'What number is missing in the progression?';
 
+const START_VALUES_RANGE = [0, 100];
+
+const LENGTH_VALUES_RANGE = [5, 10];
+
+const STEP_VALUES_RANGE = [1, 10];
+
 function run(): void
 {
-    $minStart = 0;
-    $maxStart = 100;
-
-    $minLength = 5;
-    $maxLength = 10;
-
-    $minStep = 1;
-    $maxStep = 10;
-
     $rounds = [];
     for ($i = 0; $i < MAX_ROUNDS; $i++) {
-        $start = random_int($minStart, $maxStart);
-        $length = random_int($minLength, $maxLength);
-        $step = random_int($minStep, $maxStep);
+        $start = random_int(
+            START_VALUES_RANGE[0],
+            START_VALUES_RANGE[1]
+        );
+
+        $length = random_int(
+            LENGTH_VALUES_RANGE[0],
+            LENGTH_VALUES_RANGE[1]
+        );
+
+        $step = random_int(
+            STEP_VALUES_RANGE[0],
+            STEP_VALUES_RANGE[1]
+        );
 
         $progression = createProgression($start, $length, $step);
 
