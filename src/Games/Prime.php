@@ -12,6 +12,12 @@ const GAME_DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answe
 
 const INPUT_VALUES_RANGE = [0, 100];
 
+const FIRST_EVEN_DIVISOR = 2;
+
+const FIRST_PRIME_NUMBER = 2;
+
+const SECOND_PRIME_NUMBER = 3;
+
 function run(): void
 {
     $rounds = [];
@@ -32,20 +38,20 @@ function run(): void
 
 function isPrime(int $number): bool
 {
-    if ($number < 2) {
+    if ($number < FIRST_PRIME_NUMBER) {
         return false;
     }
 
-    if ($number === 2) {
+    if ($number === FIRST_PRIME_NUMBER) {
         return true;
     }
 
-    if ($number % 2 === 0) {
+    if ($number % FIRST_EVEN_DIVISOR === 0) {
         return false;
     }
 
-    for ($i = 3; $i <= floor(sqrt($number)); $i += 2) {
-        if ($number % $i === 0) {
+    for ($oddNumber = SECOND_PRIME_NUMBER; $oddNumber <= floor(sqrt($number)); $oddNumber += 2) {
+        if ($number % $oddNumber === 0) {
             return false;
         }
     }

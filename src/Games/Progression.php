@@ -16,6 +16,8 @@ const LENGTH_VALUES_RANGE = [5, 10];
 
 const STEP_VALUES_RANGE = [1, 10];
 
+const PROGRESSION_FIRST_INDEX = 0;
+
 function run(): void
 {
     $rounds = [];
@@ -38,7 +40,7 @@ function run(): void
         $progression = createProgression($start, $length, $step);
 
         $lastIdxProgression = $length - 1;
-        $idxHideElement = random_int(0, $lastIdxProgression);
+        $idxHideElement = random_int(PROGRESSION_FIRST_INDEX, $lastIdxProgression);
         $answer = $progression[$idxHideElement];
         $progression[$idxHideElement] = '..';
 

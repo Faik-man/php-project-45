@@ -12,6 +12,8 @@ const GAME_DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "
 
 const INPUT_VALUES_RANGE = [0, 100];
 
+const FIRST_EVEN_DIVISOR = 2;
+
 function run(): void
 {
     $rounds = [];
@@ -32,5 +34,5 @@ function run(): void
 
 function isEven(int $number): bool
 {
-    return $number % 2 === 0;
+    return $number % FIRST_EVEN_DIVISOR === 0;
 }

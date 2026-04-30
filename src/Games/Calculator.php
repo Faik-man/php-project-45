@@ -12,6 +12,8 @@ const GAME_DESCRIPTION = 'What is the result of the expression?';
 
 const INPUT_VALUES_RANGE = [0, 25];
 
+const OPERATORS_FIRST_INDEX = 0;
+
 function run(): void
 {
     $operators = [
@@ -24,7 +26,7 @@ function run(): void
 
     $rounds = [];
     for ($i = 0; $i < MAX_ROUNDS; $i++) {
-        $idxOperator = random_int(0, $lastIdxOperator);
+        $idxOperator = random_int(OPERATORS_FIRST_INDEX, $lastIdxOperator);
         $operator = $operators[$idxOperator];
 
         $leftOperand = random_int(
