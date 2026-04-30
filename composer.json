@@ -17,11 +17,11 @@
         "files": [
             "src/Cli.php",
             "src/Engine.php",
-            "src/Games/CheckEven.php",
+            "src/Games/Even.php",
             "src/Games/Calculator.php",
-            "src/Games/GreatestCommonDivisor.php",
+            "src/Games/Gcd.php",
             "src/Games/Progression.php",
-            "src/Games/PrimeNumber.php"
+            "src/Games/Prime.php"
         ]
     },
     "require-dev": {

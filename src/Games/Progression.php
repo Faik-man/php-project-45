@@ -6,7 +6,9 @@ namespace BrainGames\Progression;
 
 use function BrainGames\Engine\gameLoop;
 
-use const BrainGames\Engine\MAX_ATTEMPTS;
+use const BrainGames\Engine\MAX_ROUNDS;
+
+const GAME_DESCRIPTION = 'What number is missing in the progression?';
 
 function run(): void
 {
@@ -19,9 +21,8 @@ function run(): void
     $minStep = 1;
     $maxStep = 10;
 
-    $questions = [];
-    $correctAnswers = [];
-    for ($i = 0; $i < MAX_ATTEMPTS; $i++) {
+    $rounds = [];
+    for ($i = 0; $i < MAX_ROUNDS; $i++) {
         $start = random_int($minStart, $maxStart);
         $length = random_int($minLength, $maxLength);
         $step = random_int($minStep, $maxStep);
@@ -33,15 +34,13 @@ function run(): void
         $answer = $progression[$idxHideElement];
         $progression[$idxHideElement] = '..';
 
-        $questions[] = implode(' ', $progression);
-        $correctAnswers[] = (string)$answer;
+        $rounds[] = [
+            'question'       => implode(' ', $progression),
+            'correct_answer' => (string)$answer
+        ];
     }
 
-    gameLoop([
-        'What number is missing in the progression?',
-        $questions,
-        $correctAnswers
-    ]);
+    gameLoop(GAME_DESCRIPTION, $rounds);
 }
 
 function createProgression(int $start, int $length, int $step): array

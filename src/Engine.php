@@ -7,12 +7,12 @@ namespace BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
-const MAX_ATTEMPTS = 3;
+const MAX_ROUNDS = 3;
 
 function gameLoop(
-    array $gameData
+    string $description,
+    array $rounds
 ): void {
-    [$description, $questions, $correctAnswers] = $gameData;
 
     line("Welcome to the Brain Games!");
 
@@ -21,10 +21,9 @@ function gameLoop(
 
     line($description);
 
-    for ($i = 0; $i < MAX_ATTEMPTS; $i++) {
-        line('Question: %s', $questions[$i]);
+    foreach ($rounds as ['question' => $question, 'correct_answer' => $correctAnswer]) {
+        line('Question: %s', $question);
 
-        $correctAnswer = $correctAnswers[$i];
         $userAnswer = prompt("Your answer");
         if ($correctAnswer !== $userAnswer) {
             line(
