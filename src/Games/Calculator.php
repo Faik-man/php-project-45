@@ -62,6 +62,7 @@ function calc(string $operator, int $leftOperand, int $rightOperand): int|false
             $result = $leftOperand * $rightOperand;
             break;
         default:
+            die("Ошибка: используется неопределенная математическая операция!");
             break;
     }
 
