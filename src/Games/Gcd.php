@@ -10,20 +10,22 @@ use const BrainGames\Engine\MAX_ROUNDS;
 
 const GAME_DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 
-const INPUT_VALUES_RANGE = [0, 100];
+const INPUT_VALUES_RANGE_MIN = 0;
+
+const INPUT_VALUES_RANGE_MAX = 100;
 
 function run(): void
 {
     $rounds = [];
     for ($i = 0; $i < MAX_ROUNDS; $i++) {
         $firstNumber = random_int(
-            INPUT_VALUES_RANGE[0],
-            INPUT_VALUES_RANGE[1]
+            INPUT_VALUES_RANGE_MIN,
+            INPUT_VALUES_RANGE_MAX
         );
 
         $secondNumber = random_int(
-            INPUT_VALUES_RANGE[0],
-            INPUT_VALUES_RANGE[1]
+            INPUT_VALUES_RANGE_MIN,
+            INPUT_VALUES_RANGE_MAX
         );
 
         $rounds[] = [

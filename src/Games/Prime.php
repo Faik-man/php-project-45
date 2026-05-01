@@ -10,21 +10,17 @@ use const BrainGames\Engine\MAX_ROUNDS;
 
 const GAME_DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const INPUT_VALUES_RANGE = [0, 100];
+const INPUT_VALUES_RANGE_MIN = 0;
 
-const FIRST_EVEN_DIVISOR = 2;
-
-const FIRST_PRIME_NUMBER = 2;
-
-const SECOND_PRIME_NUMBER = 3;
+const INPUT_VALUES_RANGE_MAX = 100;
 
 function run(): void
 {
     $rounds = [];
     for ($i = 0; $i < MAX_ROUNDS; $i++) {
         $randomNumber = random_int(
-            INPUT_VALUES_RANGE[0],
-            INPUT_VALUES_RANGE[1]
+            INPUT_VALUES_RANGE_MIN,
+            INPUT_VALUES_RANGE_MAX
         );
 
         $rounds[] = [
@@ -38,19 +34,19 @@ function run(): void
 
 function isPrime(int $number): bool
 {
-    if ($number < FIRST_PRIME_NUMBER) {
+    if ($number < 2) {
         return false;
     }
 
-    if ($number === FIRST_PRIME_NUMBER) {
+    if ($number === 2) {
         return true;
     }
 
-    if ($number % FIRST_EVEN_DIVISOR === 0) {
+    if ($number % 2 === 0) {
         return false;
     }
 
-    for ($oddNumber = SECOND_PRIME_NUMBER; $oddNumber <= floor(sqrt($number)); $oddNumber += 2) {
+    for ($oddNumber = 3; $oddNumber <= floor(sqrt($number)); $oddNumber += 2) {
         if ($number % $oddNumber === 0) {
             return false;
         }

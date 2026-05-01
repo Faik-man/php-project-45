@@ -10,17 +10,17 @@ use const BrainGames\Engine\MAX_ROUNDS;
 
 const GAME_DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const INPUT_VALUES_RANGE = [0, 100];
+const INPUT_VALUES_RANGE_MIN = 0;
 
-const FIRST_EVEN_DIVISOR = 2;
+const INPUT_VALUES_RANGE_MAX = 100;
 
 function run(): void
 {
     $rounds = [];
     for ($i = 0; $i < MAX_ROUNDS; $i++) {
         $randomNumber = random_int(
-            INPUT_VALUES_RANGE[0],
-            INPUT_VALUES_RANGE[1]
+            INPUT_VALUES_RANGE_MIN,
+            INPUT_VALUES_RANGE_MAX
         );
 
         $rounds[] = [
@@ -34,5 +34,5 @@ function run(): void
 
 function isEven(int $number): bool
 {
-    return $number % FIRST_EVEN_DIVISOR === 0;
+    return $number % 2 === 0;
 }

@@ -10,7 +10,9 @@ use const BrainGames\Engine\MAX_ROUNDS;
 
 const GAME_DESCRIPTION = 'What is the result of the expression?';
 
-const INPUT_VALUES_RANGE = [0, 25];
+const INPUT_VALUES_RANGE_MIN = 0;
+
+const INPUT_VALUES_RANGE_MAX = 25;
 
 const OPERATORS_FIRST_INDEX = 0;
 
@@ -30,13 +32,13 @@ function run(): void
         $operator = $operators[$idxOperator];
 
         $leftOperand = random_int(
-            INPUT_VALUES_RANGE[0],
-            INPUT_VALUES_RANGE[1]
+            INPUT_VALUES_RANGE_MIN,
+            INPUT_VALUES_RANGE_MAX
         );
 
         $rightOperand = random_int(
-            INPUT_VALUES_RANGE[0],
-            INPUT_VALUES_RANGE[1]
+            INPUT_VALUES_RANGE_MIN,
+            INPUT_VALUES_RANGE_MAX
         );
 
         $rounds[] = [
