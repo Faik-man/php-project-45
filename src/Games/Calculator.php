@@ -50,23 +50,17 @@ function run(): void
     gameLoop(GAME_DESCRIPTION, $rounds);
 }
 
-function calc(string $operator, int $leftOperand, int $rightOperand): int|false
+function calc(string $operator, int $leftOperand, int $rightOperand): int
 {
-    $result = false;
     switch ($operator) {
         case '+':
-            $result = $leftOperand + $rightOperand;
-            break;
+            return $leftOperand + $rightOperand;
         case '-':
-            $result = $leftOperand - $rightOperand;
-            break;
+            return $leftOperand - $rightOperand;
         case '*':
-            $result = $leftOperand * $rightOperand;
-            break;
+            return $leftOperand * $rightOperand;
         default:
             die("Ошибка: используется неопределенная математическая операция!");
             break;
     }
-
-    return $result;
 }
