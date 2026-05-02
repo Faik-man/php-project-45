@@ -11,7 +11,6 @@ use const BrainGames\Engine\MAX_ROUNDS;
 const GAME_DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const INPUT_VALUES_RANGE_MIN = 0;
-
 const INPUT_VALUES_RANGE_MAX = 100;
 
 function run(): void

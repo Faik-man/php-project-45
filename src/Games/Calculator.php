@@ -11,7 +11,6 @@ use const BrainGames\Engine\MAX_ROUNDS;
 const GAME_DESCRIPTION = 'What is the result of the expression?';
 
 const INPUT_VALUES_RANGE_MIN = 0;
-
 const INPUT_VALUES_RANGE_MAX = 25;
 
 const OPERATORS_FIRST_INDEX = 0;

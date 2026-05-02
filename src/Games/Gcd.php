@@ -11,7 +11,6 @@ use const BrainGames\Engine\MAX_ROUNDS;
 const GAME_DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 
 const INPUT_VALUES_RANGE_MIN = 0;
-
 const INPUT_VALUES_RANGE_MAX = 100;
 
 function run(): void

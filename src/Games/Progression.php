@@ -11,15 +11,12 @@ use const BrainGames\Engine\MAX_ROUNDS;
 const GAME_DESCRIPTION = 'What number is missing in the progression?';
 
 const START_VALUES_RANGE_MIN = 0;
-
 const START_VALUES_RANGE_MAX = 100;
 
 const LENGTH_VALUES_RANGE_MIN = 5;
-
 const LENGTH_VALUES_RANGE_MAX = 10;
 
 const STEP_VALUES_RANGE_MIN = 1;
-
 const STEP_VALUES_RANGE_MAX = 10;
 
 const PROGRESSION_FIRST_INDEX = 0;
