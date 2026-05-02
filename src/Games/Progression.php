@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BrainGames\Progression;
+namespace BrainGames\Games\Progression;
 
 use function BrainGames\Engine\gameLoop;
 

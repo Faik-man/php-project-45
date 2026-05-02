@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BrainGames\Calculator;
+namespace BrainGames\Games\Calculator;
 
 use function BrainGames\Engine\gameLoop;
 

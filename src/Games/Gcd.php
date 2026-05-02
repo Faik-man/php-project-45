@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BrainGames\GreatestCommonDivisor;
+namespace BrainGames\Games\Gcd;
 
 use function BrainGames\Engine\gameLoop;
 

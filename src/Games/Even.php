@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BrainGames\CheckEven;
+namespace BrainGames\Games\Even;
 
 use function BrainGames\Engine\gameLoop;
 

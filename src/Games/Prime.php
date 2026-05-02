@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BrainGames\PrimeNumber;
+namespace BrainGames\Games\Prime;
 
 use function BrainGames\Engine\gameLoop;
 
